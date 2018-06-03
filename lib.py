@@ -73,7 +73,7 @@ def numOfZ(day): # returns num of zombies
         return 2
     previous = Z[-1]
     if rhoZero:
-        probabilityOfAnEncounter = S[-1] * Z[-1] / numOfPeopleAlive(day)
+        probabilityOfAnEncounter = S[-1] * Z[-1] / (numOfPeopleAlive(day) - 1)
         zombieAdditional = int(probabilityOfAnEncounter * beta)
     else:
         zombieAdditional = incubatedAdditionals[-1 * rhoAbs]
@@ -87,7 +87,7 @@ def numOfI(day): # returns num of incubated people
         return 0 # no one is incubated/infected at the beginning of the zombie epidemic
     if day == 0:
         return 0
-    probabilityOfAnEncounter = S[-1] * Z[-2] / numOfPeopleAlive(day)
+    probabilityOfAnEncounter = S[-1] * Z[-2] / (numOfPeopleAlive(day) - 1)
     incubatedAdditional = int(probabilityOfAnEncounter * beta)
     previous = I[-1]
     #DEBUG print("numOfPeopleAlive = ", numOfPeopleAlive(day))
